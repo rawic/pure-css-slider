@@ -1,7 +1,6 @@
 .slider-wrapper {
-  background-color: #000;
   border-radius: rem(12px);
-  box-shadow: 0 0 25px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 25px rgba(0, 0, 0, .05);
   counter-reset: currentSlide;
   margin-left: auto;
   margin-right: auto;
