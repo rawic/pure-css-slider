@@ -1,11 +1,13 @@
 {
-  "name": "vanilla",
+  "name": "pure-css-slider",
   "version": "1.0.0",
-  "description": "JavaScript demo starter project",
+  "description": "Pure CSS Slider",
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html --open",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "predeploy": "rm -rf dist && parcel build index.html",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {},
   "devDependencies": {
@@ -14,7 +16,7 @@
     "sass": "^1.29.0"
   },
   "keywords": [
-    "javascript",
-    "starter"
+    "css",
+    "slider"
   ]
 }
