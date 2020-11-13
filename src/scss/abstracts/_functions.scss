@@ -1,0 +1,31 @@
+@function replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  
+  @return $string;
+}
+
+@function repeat($pattern) {
+  $selectors: ();
+
+  @for $i from 1 through $max-slides {
+    $replaced_pattern: #{replace($pattern, ' $z ', $i)};
+    $replaced_pattern: #{replace($replaced_pattern, ' $zl ', $i - 1)};
+    $replaced_pattern: #{replace($replaced_pattern, ' $zr ', $i + 1)};
+
+    $selectors: append(
+      $selectors,
+      #{replace($replaced_pattern, ' $z ', $i)},
+      comma
+    )
+  }
+
+  @return $selectors;
+}
+
+@function rem($size) {
+  @return $size / 16px * 1rem;
+}

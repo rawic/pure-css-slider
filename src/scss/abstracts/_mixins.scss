@@ -1,0 +1,70 @@
+@use "sass:map";
+
+@mixin addMarginLeftToSlides($slide-index) {
+  @if $slide-index > 0 {
+    input:nth-of-type(#{$slide-index}):checked ~ .slider-slides .slider-slide:first-of-type {
+      margin-left: -100% * ($slide-index - 1);
+    }
+
+    @include addMarginLeftToSlides($slide-index - 1);
+  }
+}
+
+@mixin handleActiveSlideAnimation($slide-index) {
+  @if $slide-index > 0 {
+    input:nth-of-type(#{$slide-index}):checked {
+      ~ .slider-slides .slider-slide:nth-of-type(#{$slide-index}) {
+        .slider-image {
+          $slide-effect: map.get($slide-effects, 'slide#{$slide-index}');
+          $effect-active-type: map.get($slide-effect, active);
+          
+          @each $transition-name, $transition-value in $effect-active-type {
+            #{$transition-name}: #{$transition-value};
+          }
+
+          opacity: 1;
+        }
+        .slider-content {
+          margin-left: 0;
+          transition: margin-left $transition-duration * 5 ease $transition-delay;
+        }
+      }
+    
+      ~ .slider-nav .slider-nav-item:nth-of-type(#{$slide-index}) {
+        color: $dot-color;
+        background-color: $dot-active-bg;
+      } 
+    }
+
+    @include handleActiveSlideAnimation($slide-index - 1);
+  }
+}
+
+@mixin handleDefaultSlideAnimation($slide-index) {
+  $transitions: ();
+
+  @if $slide-index > 0 {
+
+    &:nth-of-type(#{$slide-index}) {
+      .slider-image {
+        $slide-effect: map.get($slide-effects, 'slide#{$slide-index}');
+        $effect-default-type: map.get($slide-effect, default);
+
+        @each $transition-name, $transition-value in $effect-default-type {
+          #{$transition-name}: #{$transition-value};
+
+          $transitions: append(
+            $transitions,
+            #{$transition-name} $transition-duration * 5,
+            comma
+          );
+        }
+
+        opacity: $slide-start-opacity;
+        transition: $transitions, opacity $transition-delay;
+      }
+    }
+
+    @include handleDefaultSlideAnimation($slide-index - 1);
+  }
+}

@@ -1,0 +1,28 @@
+@import './scss/base/global';
+
+* {
+  &, &::before, &::after {
+    box-sizing: border-box;
+  }
+}
+
+html, body {
+  height: 100%;
+}
+    
+body {
+  align-items: center;
+  background-color: #F6F7FA;
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  justify-content: center;
+  margin: 0;
+  padding: 20px;
+}
+  
+img { 
+  height: auto;
+  width: 100%;
+}
+  
+@import './scss/components';

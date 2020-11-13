@@ -1,0 +1,38 @@
+.slider-slide {
+  @include handleDefaultSlideAnimation($max-slides);
+  border-radius: rem(12px);
+  counter-increment: currentSlide;
+  display: flex;
+  font-size: rem(15px);
+  height: 100%;
+  line-height: normal;
+  min-width: 100%;
+  overflow: hidden;
+  position: relative;
+  transition: margin-left;
+  vertical-align: top;
+  white-space: normal;
+}
+
+.slider-content {
+  background-color: #fff;
+  flex-shrink: 0;
+  height: 100%;
+  margin-left: rem(-$slide-content-width);
+  padding: rem(20px) rem(30px);
+  position: relative;
+  top: 0;
+  width: rem($slide-content-width);
+  z-index: 1;
+}
+
+.slider-title {
+  &::after {
+    content: ' #' counter(currentSlide);
+  }
+}
+
+.slider-image {
+  height: 100%;
+  object-fit: cover;
+}

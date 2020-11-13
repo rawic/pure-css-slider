@@ -1,0 +1,62 @@
+$transition-delay: 1s;
+$transition-duration: .2s;
+
+// slider
+$slider-width: 1000px;
+
+// arrows
+$arrow-color: #000;
+$arrows-wrapper-width: 70px;
+
+// navigation dots
+$dot-active-bg: #fff;
+$dot-color: #000;
+
+// slides
+$max-slides: 5;
+$slide-content-width: 300px;
+$slide-start-opacity: .6;
+$slide-effects: (
+  slide1: (
+    active: (
+      filter: 'blur(0) grayscale(0)',
+      transform: 'scale(1) rotateZ(0)'
+    ),
+    default: (
+      filter: 'blur(10px) grayscale(100%)',
+      transform: 'scale(2) rotateZ(10deg)'
+    )
+  ),
+  slide2: (
+    active: (
+      transform: 'scale(1)'
+    ),
+    default: (
+      transform: 'scale(2)'
+    )
+  ),
+  slide3: (
+    active: (
+      filter: 'blur(0)'
+    ),
+    default: (
+      filter: 'blur(10px)'
+    )
+  ),
+  slide4: (
+    active: (
+      transform: 'rotateZ(0)'
+    ),
+    default: (
+      transform: 'scale(2) rotateZ(-10deg)'
+    )
+  ),
+  slide5: (
+    active: (
+      filter: 'grayscale(0)'
+    ),
+    default: (
+      filter: 'grayscale(100%)'
+    )
+  )
+)

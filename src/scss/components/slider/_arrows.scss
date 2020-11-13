@@ -1,0 +1,50 @@
+.slider-arrows {
+  display: flex;
+  position: absolute;
+  width: $arrows-wrapper-width;
+  right: 0;
+}
+
+.slider-arrow {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  transition: color $transition-duration;
+  width: rem(30px);
+  height: rem(30px);
+  align-items: center;
+  justify-content: center;
+  color: $arrow-color;
+  &::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+  }
+  &:hover {
+    color: lighten($arrow-color, 60%);
+  }
+}
+
+// left arrow
+.slider-wrapper > input:first-of-type:checked ~ .slider-arrows .slider-arrow.-go-to-last, #{repeat('.slider-wrapper > input:nth-of-type( $z ):checked ~ .slider-arrows > .slider-arrow:nth-of-type( $zl )')} {
+  display: flex;
+  left: 0;
+  &::before {
+    content: '\f104';
+  }
+}
+
+// right arrow
+.slider-wrapper > input:last-of-type:checked ~ .slider-arrows .slider-arrow.-go-to-first, #{repeat('.slider-wrapper > input:nth-of-type( $z ):checked ~ .slider-arrows > .slider-arrow:nth-of-type( $zr )')} {
+  display: flex;
+  right: 0;
+  &::before {
+    content: '\f105';
+  }
+}
